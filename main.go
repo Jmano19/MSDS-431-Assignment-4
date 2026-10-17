@@ -1,0 +1,67 @@
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+// AnscombeDataset stores one of the four paired x and y datasets.
+type AnscombeDataset struct {
+	Name string
+	X    []float64
+	Y    []float64
+}
+
+// anscombeDatasets returns the four datasets used in the assignment.
+func anscombeDatasets() []AnscombeDataset {
+	commonX := []float64{10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5}
+
+	return []AnscombeDataset{
+		{
+			Name: "I",
+			X:    commonX,
+			Y:    []float64{8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68},
+		},
+		{
+			Name: "II",
+			X:    commonX,
+			Y:    []float64{9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74},
+		},
+		{
+			Name: "III",
+			X:    commonX,
+			Y:    []float64{7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73},
+		},
+		{
+			Name: "IV",
+			X:    []float64{8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8},
+			Y:    []float64{6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89},
+		},
+	}
+}
+
+func main() {
+	fmt.Println("Anscombe Quartet — Go Linear Regression")
+	fmt.Println("Package: github.com/montanaflynn/stats")
+	fmt.Println()
+
+	fmt.Printf("%-12s %12s %12s %10s\n",
+		"Dataset", "Intercept", "Slope", "Points")
+	fmt.Println("----------------------------------------------------")
+
+	for _, dataset := range anscombeDatasets() {
+		result, err := linearRegression(dataset.X, dataset.Y)
+		if err != nil {
+			log.Fatalf("Dataset %s: %v", dataset.Name, err)
+		}
+
+		fmt.Printf("%-12s %12.6f %12.6f %10d\n",
+			dataset.Name,
+			result.Intercept,
+			result.Slope,
+			len(dataset.X),
+		)
+	}
+
+	fmt.Println("\nAll four datasets processed successfully.")
+}
