@@ -46,7 +46,7 @@ The project generates a 2×2 scatterplot of Anscombe's Quartet with a fitted lin
 The four plots highlight different analytical challenges: an approximately linear relationship, a nonlinear pattern, an influential outlier, and a high-leverage observation.
 The visualization is generated using R's built-in anscombe dataset and base plotting functions. No additional R plotting package is required.
 
-![Ansbombe Quartet](results\anscombe_quartet.png)
+![Ansbombe Quartet](./results/anscombe_quartet.png)
 
 ## Performance Results
 
