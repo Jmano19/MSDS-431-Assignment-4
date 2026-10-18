@@ -40,6 +40,14 @@ The following table shows the estimated coefficients for each dataset. Values ar
 
 All three implementations produced matching coefficient estimates to the displayed precision.
 
+## Data Visualization: Anscombe's Quartet
+
+The project generates a 2×2 scatterplot of Anscombe's Quartet with a fitted linear regression line for each dataset. The visualization complements the numerical regression results by showing how different data distributions can produce similar regression coefficients.
+The four plots highlight different analytical challenges: an approximately linear relationship, a nonlinear pattern, an influential outlier, and a high-leverage observation.
+The visualization is generated using R's built-in anscombe dataset and base plotting functions. No additional R plotting package is required.
+
+![Ansbombe Quartet](results\anscombe_quartet.png)
+
 ## Performance Results
 
 | Metric | Go | Python | R |
